@@ -1,0 +1,285 @@
+
+
+$ ghci
+GHCi, version 8.8.4: https://www.haskell.org/ghc/  :? for help
+Prelude>
+Prelude> :l Ejercicio2.hs
+[1 of 2] Compiling HuttonParsing    ( HuttonParsing.hs, interpreted )
+[2 of 2] Compiling Ejercicio2       ( Ejercicio2.hs, interpreted )
+Ok, two modules loaded.
+*Ejercicio2>
+*Ejercicio2>
+*Ejercicio2> :t parserChar
+parserChar :: Parser Char
+*Ejercicio2> :t parse
+parse :: Parser a -> String -> [(a, String)]
+*Ejercicio2>
+*Ejercicio2> :t (parse parserChar)
+(parse parserChar) :: String -> [(Char, String)]
+*Ejercicio2>
+*Ejercicio2> -- compilando parserCeroOmasChars = (many parserChar)
+*Ejercicio2>
+*Ejercicio2> :l Ejercicio2.hs
+[1 of 2] Compiling HuttonParsing    ( HuttonParsing.hs, interpreted )
+[2 of 2] Compiling Ejercicio2       ( Ejercicio2.hs, interpreted )
+Ok, two modules loaded.
+*Ejercicio2>
+*Ejercicio2>
+*Ejercicio2>
+*Ejercicio2> :t parserCeroOmasChars
+parserCeroOmasChars :: Parser [Char]
+*Ejercicio2>
+*Ejercicio2>
+*Ejercicio2>
+*Ejercicio2>
+*Ejercicio2>
+*Ejercicio2> :l Ejercicio2.hs
+[1 of 2] Compiling HuttonParsing    ( HuttonParsing.hs, interpreted )
+[2 of 2] Compiling Ejercicio2       ( Ejercicio2.hs, interpreted )
+Ok, two modules loaded.
+*Ejercicio2>
+*Ejercicio2> -- aplicando parse (analiza) con el parser parserC
+parserCeroOmasChars  parserChar
+*Ejercicio2> -- aplicando parse (analizar) con el parser parserCeroOmasChars, a ""
+*Ejercicio2> parse parserCeroOmasChars "" -- el input es nulo ""
+[("","")]
+*Ejercicio2> -- resultado fue: [("","")] , exito con el input "", y el sobrante es nulo
+*Ejercicio2>
+*Ejercicio2> parse parserCeroOmasChars "yatbpq" -- el input es nulo "yatbpq"
+[("yatbpq","")]
+*Ejercicio2> -- el resultado fue: [("yatbpq","")], no sobra nada del input, resultado="yatbpq"
+*Ejercicio2> :t reverse
+reverse :: [a] -> [a]
+*Ejercicio2>
+*Ejercicio2>
+*Ejercicio2> -- compilando parserCeroOmasCharsReversa:
+*Ejercicio2> :l Ejercicio2.hs
+[1 of 2] Compiling HuttonParsing    ( HuttonParsing.hs, interpreted )
+[2 of 2] Compiling Ejercicio2       ( Ejercicio2.hs, interpreted )
+Ok, two modules loaded.
+*Ejercicio2>
+*Ejercicio2> parse parserCeroOmasCharsReversa "yatbpq" -- el input es nulo "yatbpq"
+[("qpbtay","")]
+*Ejercicio2>
+*Ejercicio2>
+*Ejercicio2> :l Ejercicio2.hs
+[1 of 2] Compiling HuttonParsing    ( HuttonParsing.hs, interpreted )
+[2 of 2] Compiling Ejercicio2       ( Ejercicio2.hs, interpreted )
+Ok, two modules loaded.
+*Ejercicio2>
+*Ejercicio2> parse parserCeroOmasCharsReversa "yatbpq" -- el input es nulo "yatbpq"
+[("qpbtay","")]
+*Ejercicio2>
+*Ejercicio2> :t isDigit  -- isDigit esta en la biblioteca Data.Char
+isDigit  -- isDigit esta en la biblioteca Data.Char :: Char -> Bool
+*Ejercicio2> -- isDigit esta en la biblioteca Data.Char
+*Ejercicio2>
+*Ejercicio2> :t isDigit
+isDigit :: Char -> Bool
+*Ejercicio2> isDigit '9'
+True
+*Ejercicio2> isDigit 'a'
+False
+*Ejercicio2>
+*Ejercicio2> isDigit 'a'
+False
+*Ejercicio2> -- compilando parserUnDigito:
+*Ejercicio2> :l Ejercicio2
+Ejercicio2     Ejercicio2.hs
+*Ejercicio2> :l Ejercicio2.hs
+[1 of 2] Compiling HuttonParsing    ( HuttonParsing.hs, interpreted )
+[2 of 2] Compiling Ejercicio2       ( Ejercicio2.hs, interpreted )
+
+Ejercicio2.hs:158:13: error:
+    Variable not in scope: p :: Char -> Bool
+    |
+158 |         if (p x)
+    |             ^
+Failed, one module loaded.
+*HuttonParsing>
+*HuttonParsing>
+*HuttonParsing> -- compilando parserUnDigito:
+*HuttonParsing> :l Ejercicio2.hs
+[1 of 2] Compiling HuttonParsing    ( HuttonParsing.hs, interpreted )
+[2 of 2] Compiling Ejercicio2       ( Ejercicio2.hs, interpreted )
+Ok, two modules loaded.
+*Ejercicio2>
+*Ejercicio2> :t parserUnDigito
+parserUnDigito :: Parser Char
+*Ejercicio2>
+*Ejercicio2> :t (parse parserUnDigito )
+(parse parserUnDigito ) :: String -> [(Char, String)]
+*Ejercicio2>
+*Ejercicio2> parse parserUnDigito "1_abc"
+[('1',"_abc")]
+*Ejercicio2>
+*Ejercicio2> -- ahora un parser para cero o mas digitos
+*Ejercicio2>
+*Ejercicio2> -- compilando parserCeroOmasDigitos:
+*Ejercicio2> :l Ejercicio2.hs
+[1 of 2] Compiling HuttonParsing    ( HuttonParsing.hs, interpreted )
+[2 of 2] Compiling Ejercicio2       ( Ejercicio2.hs, interpreted )
+
+Ejercicio2.hs:171:24: error:
+    • Data constructor not in scope: Read :: [Char] -> Int
+    • Perhaps you meant one of these:
+        variable ‘read’ (imported from Prelude),
+        variable ‘head’ (imported from Prelude)
+    |
+171 |         digitosInt <- (Read digitosStr :: Int)
+    |                        ^^^^
+Failed, one module loaded.
+*HuttonParsing>
+*HuttonParsing>
+*HuttonParsing> :l Ejercicio2.hs
+[1 of 2] Compiling HuttonParsing    ( HuttonParsing.hs, interpreted )
+[2 of 2] Compiling Ejercicio2       ( Ejercicio2.hs, interpreted )
+
+Ejercicio2.hs:171:24: error:
+    • Couldn't match expected type ‘Parser b’ with actual type ‘Int’
+    • In a stmt of a 'do' block: digitosInt <- (read digitosStr :: Int)
+      In the expression:
+        do digitosStr <- (many parserUnDigito)
+           digitosInt <- (read digitosStr :: Int)
+           return digitosInt
+      In an equation for ‘parserCeroOmasDigitos’:
+          parserCeroOmasDigitos
+            = do digitosStr <- (many parserUnDigito)
+                 digitosInt <- (read digitosStr :: Int)
+                 return digitosInt
+    • Relevant bindings include
+        parserCeroOmasDigitos :: Parser b (bound at Ejercicio2.hs:168:1)
+    |
+171 |         digitosInt <- (read digitosStr :: Int)
+    |                        ^^^^^^^^^^^^^^^^^^^^^^
+Failed, one module loaded.
+*HuttonParsing>
+*HuttonParsing>
+*HuttonParsing> :l Ejercicio2.hs
+[1 of 2] Compiling HuttonParsing    ( HuttonParsing.hs, interpreted )
+[2 of 2] Compiling Ejercicio2       ( Ejercicio2.hs, interpreted )
+
+Ejercicio2.hs:171:24: error:
+    • No instance for (Read (Parser b0)) arising from a use of ‘read’
+    • In a stmt of a 'do' block: digitosInt <- (read digitosStr)
+      In the expression:
+        do digitosStr <- (many parserUnDigito)
+           digitosInt <- (read digitosStr)
+           return digitosInt
+      In an equation for ‘parserCeroOmasDigitos’:
+          parserCeroOmasDigitos
+            = do digitosStr <- (many parserUnDigito)
+                 digitosInt <- (read digitosStr)
+                 return digitosInt
+    |
+171 |         digitosInt <- (read digitosStr) -- :: Int)
+    |                        ^^^^^^^^^^^^^^^
+Failed, one module loaded.
+*HuttonParsing>
+*HuttonParsing>
+*HuttonParsing> :l Ejercicio2.hs
+[1 of 2] Compiling HuttonParsing    ( HuttonParsing.hs, interpreted )
+[2 of 2] Compiling Ejercicio2       ( Ejercicio2.hs, interpreted )
+
+Ejercicio2.hs:172:24: error:
+    • No instance for (Read (Parser Int)) arising from a use of ‘read’
+    • In a stmt of a 'do' block: digitosInt <- (read digitosStr)
+      In the expression:
+        do digitosStr <- (many parserUnDigito)
+           digitosInt <- (read digitosStr)
+           return digitosInt
+      In an equation for ‘parserCeroOmasDigitos’:
+          parserCeroOmasDigitos
+            = do digitosStr <- (many parserUnDigito)
+                 digitosInt <- (read digitosStr)
+                 return digitosInt
+    |
+172 |         digitosInt <- (read digitosStr) -- :: Int)
+    |                        ^^^^^^^^^^^^^^^
+Failed, one module loaded.
+*HuttonParsing>
+*HuttonParsing>
+*HuttonParsing> :l Ejercicio2.hs
+[1 of 2] Compiling HuttonParsing    ( HuttonParsing.hs, interpreted )
+[2 of 2] Compiling Ejercicio2       ( Ejercicio2.hs, interpreted )
+
+Ejercicio2.hs:172:24: error:
+    • No instance for (Read (Parser Int)) arising from a use of ‘read’
+    • In a stmt of a 'do' block: digitosInt <- (read digitosStr)
+      In the expression:
+        do digitosStr <- (many parserUnDigito)
+           digitosInt <- (read digitosStr)
+           return digitosInt
+      In an equation for ‘parserCeroOmasDigitos’:
+          parserCeroOmasDigitos
+            = do digitosStr <- (many parserUnDigito)
+                 digitosInt <- (read digitosStr)
+                 return digitosInt
+    |
+172 |         digitosInt <- (read digitosStr) -- :: Int)
+    |                        ^^^^^^^^^^^^^^^
+Failed, one module loaded.
+*HuttonParsing>
+*HuttonParsing> :l Ejercicio2.hs
+[1 of 2] Compiling HuttonParsing    ( HuttonParsing.hs, interpreted )
+[2 of 2] Compiling Ejercicio2       ( Ejercicio2.hs, interpreted )
+
+Ejercicio2.hs:172:24: error:
+    • No instance for (Read (Parser Int)) arising from a use of ‘read’
+    • In a stmt of a 'do' block: digitosInt <- (read digitosStr)
+      In the expression:
+        do digitosStr <- (some parserUnDigito)
+           digitosInt <- (read digitosStr)
+           return digitosInt
+      In an equation for ‘parserCeroOmasDigitos’:
+          parserCeroOmasDigitos
+            = do digitosStr <- (some parserUnDigito)
+                 digitosInt <- (read digitosStr)
+                 return digitosInt
+    |
+172 |         digitosInt <- (read digitosStr) -- :: Int)
+    |                        ^^^^^^^^^^^^^^^
+Failed, one module loaded.
+*HuttonParsing>
+*HuttonParsing> read "1"
+*** Exception: Prelude.read: no parse
+*HuttonParsing>
+*HuttonParsing>
+*HuttonParsing> :t read
+read :: Read a => String -> a
+*HuttonParsing> read "1" :: Int
+1
+*HuttonParsing> read "" :: Int
+*** Exception: Prelude.read: no parse
+*HuttonParsing>
+*HuttonParsing>
+*HuttonParsing> :l Ejercicio2.hs
+[1 of 2] Compiling HuttonParsing    ( HuttonParsing.hs, interpreted )
+[2 of 2] Compiling Ejercicio2       ( Ejercicio2.hs, interpreted )
+Ok, two modules loaded.
+*Ejercicio2>
+*Ejercicio2> :t parserCeroOmasDigitos
+parserCeroOmasDigitos :: Parser Int
+*Ejercicio2>
+*Ejercicio2> :l Ejercicio2.hs
+[1 of 2] Compiling HuttonParsing    ( HuttonParsing.hs, interpreted )
+[2 of 2] Compiling Ejercicio2       ( Ejercicio2.hs, interpreted )
+Ok, two modules loaded.
+*Ejercicio2>
+*Ejercicio2>
+*Ejercicio2> -- aplicando parse a los parser:
+*Ejercicio2> parse parserCeroOmasDigitos "12abc"
+[(12,"abc")]
+*Ejercicio2>
+*Ejercicio2> parse parserCeroOmasDigitos "1abc"
+[(1,"abc")]
+*Ejercicio2>
+*Ejercicio2> parse parserCeroOmasDigitos "abc"
+[(*** Exception: Prelude.read: no parse
+*Ejercicio2>
+*Ejercicio2> parse parserUnoOmasDigitos "abc"
+[]
+*Ejercicio2>
+*Ejercicio2> :q
+Leaving GHCi.
+$
