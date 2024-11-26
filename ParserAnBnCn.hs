@@ -17,6 +17,6 @@ parserAnBnCn = do
     as <- zeroOrMoreAs
     bs <- zeroOrMoreBs
     cs <- zeroOrMoreCs
-    if length as == length bs && length as == length bs
+    if length as == length bs && length as == length cs
         then return (as,bs,cs)
         else empty
