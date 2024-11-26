@@ -5,16 +5,17 @@ import HuttonParsing
 parser1 :: Parser Char
 parser1 = (char '1')
 
-parserEq :: Parser Char
-parserEq = (char '=')
+parserEq :: Parser String
+parserEq = do
+    eq <- char '='
+    return [eq]
 
+parser_1_identidad_1 :: Parser String
+parser_1_identidad_1 = do
+    charL <- parser1
+    iden <- parserIdentidad
+    charR <- parser1
+    return (charL : iden ++ [charR])
+    
 parserIdentidad :: Parser String
-parserIdentidad = do
-    char1 <- parser1
-    inner <- parserIdentidad
-    char2 <- parser1
-    return (char1: inner ++ [char2])
-    <|>
-    do
-        eq <- parserEq
-        return [eq]
+parserIdentidad = parser_1_identidad_1 <|> parserEq
