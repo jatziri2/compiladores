@@ -1,0 +1,15 @@
+$ ghci
+GHCi, version 8.8.4: https://www.haskell.org/ghc/  :? for help
+Prelude> :l ParsersXyHola.hs
+[1 of 2] Compiling HuttonParsing    ( HuttonParsing.hs, interpreted )
+[2 of 2] Compiling ParsersXyHola    ( ParsersXyHola.hs, interpreted )
+Ok, two modules loaded.
+*ParsersXyHola> parse parserX "Xzzz"
+[('X',"zzz")]
+*ParsersXyHola> parse parserX "xzzz"
+[]
+*ParsersXyHola> parse parserHola "Holazzz"
+[("Hola","zzz")]
+*ParsersXyHola> parse parserHola "holazzz"
+[]
+*ParsersXyHola> 

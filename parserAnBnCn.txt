@@ -1,0 +1,13 @@
+$ ghci
+GHCi, version 8.8.4: https://www.haskell.org/ghc/  :? for help
+Prelude> :l ParserAnBnCn.hs
+[1 of 2] Compiling HuttonParsing    ( HuttonParsing.hs, interpreted )
+[2 of 2] Compiling ParserAnBnCn     ( ParserAnBnCn.hs, interpreted )
+Ok, two modules loaded.
+*ParserAnBnCn> parse parserAnBnCn "aabbcc"
+[(("aa","bb","cc"),"")]
+*ParserAnBnCn> parse parserAnBnCn "aabbccc"
+[]
+*ParserAnBnCn> parse parserAnBnCn ""
+[(("","",""),"")]
+*ParserAnBnCn> 

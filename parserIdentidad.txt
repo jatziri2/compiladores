@@ -1,0 +1,17 @@
+$ ghci
+GHCi, version 8.8.4: https://www.haskell.org/ghc/  :? for help
+Prelude> :l ParserLenguajeId.hs
+[1 of 2] Compiling HuttonParsing    ( HuttonParsing.hs, interpreted )
+[2 of 2] Compiling ParserLenguajeId ( ParserLenguajeId.hs, interpreted )
+Ok, two modules loaded.
+*ParserLenguajeId> parse parserIdentidad "1=1"
+[("1=1","")]
+*ParserLenguajeId> parse parserIdentidad "="
+[("=","")]
+*ParserLenguajeId> parse parserIdentidad "=1"
+[("=","1")]
+*ParserLenguajeId> parse parserIdentidad "1="
+[]
+*ParserLenguajeId> parse parserIdentidad "111=111"
+[("111=111","")]
+*ParserLenguajeId> 
